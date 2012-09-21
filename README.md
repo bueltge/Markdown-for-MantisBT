@@ -12,8 +12,10 @@ For highlighting the source use the Manits plugin [highlightcode](https://github
  * Filter on BBCode. If you use BBCode in MantisBT, then active this and the filter works only, if insde the strings is not an bbcode string.
 
 ## Screenshot
+A example in MantisBT with default Markdown parser, not the extra modul
 ![Screenshot on a mantis install](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-1.png)
 
+The settings for the Markdown plugin
 ![Screenshot from the settings](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-2.png)
 
 ## Installation
