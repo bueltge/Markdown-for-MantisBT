@@ -14,6 +14,8 @@ For highlighting the source use the Manits plugin [highlightcode](https://github
 ## Screenshot
 ![Screenshot on a mantis install](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-1.png)
 
+![Screenshot from the settings](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-2.png)
+
 ## Installation
  1. Just unpack (with folder Markdown) in MantisBT_Root_Folder/plugins/
  2. Install optional also the [highlightcode](https://github.com/mantisbt-plugins/highlightcode) plugin
