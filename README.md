@@ -1,8 +1,10 @@
 # Markdown plugin for MantisBT
 
 ## Description
-It's help convert some Markdown to html-style.
+It's help convert some Markdown to html-style in Mantis Bug Tracker.
 For highlighting the source use the Manits plugin [highlightcode](https://github.com/mantisbt-plugins/highlightcode)
+
+[Mantis Bug Tracker](http://www.mantisbt.org/) (MantisBT) is a free popular web-based bugtracking system.
 
 ### Optional settings
  * Use Markdown for all texts in MantisBT
