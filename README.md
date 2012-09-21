@@ -21,9 +21,9 @@ The settings for the Markdown plugin
 ## Installation
  1. Just unpack (with folder Markdown) in MantisBT_Root_Folder/plugins/
  2. Install optional also the [highlightcode](https://github.com/mantisbt-plugins/highlightcode) plugin
- 3. Go /manage_plugin_page.php
+ 3. Go `/manage_plugin_page.php`
  4. Install MantisBT Markdown Plugin
- 5. Check the settings
+ 5. Check the settings on `plugin.php?page=Markdown/config`
  6. Use it ;)
 
 ## Other Notes
@@ -31,7 +31,15 @@ The settings for the Markdown plugin
 Version see in VERSION.txt
 
 ### Licence
-Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog.
+Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 ### Contributors
 see the [contributors graph](https://github.com/bueltge/Markdown-for-MantisBT/graphs/contributors) for the current status
+
+### Contact & Feedback
+The plugin is designed and developed by me ([Frank Bültge](http://bueltge.de))
+
+Please let me know if you like the plugin or you hate it or whatever ... Please fork it, add an issue for ideas and bugs.
+
+### Disclaimer
+I'm German and my English might be gruesome here and there. So please be patient with me and let me know of typos or grammatical farts. Thanks
