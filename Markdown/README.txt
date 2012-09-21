@@ -23,3 +23,5 @@ Installation see in INSTALL.txt
 
 Supported syntax:
 http://daringfireball.net/projects/markdown/syntax
+or/and
+http://michelf.com/projects/php-markdown/extra/
