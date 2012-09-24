@@ -112,12 +112,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function text( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		$t_string = $p_string;
-		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			$this->string_process_markdown( $t_string );
+			$p_string = $this->string_process_markdown( $p_string );
 		
-		return $t_string;
+		return $p_string;
 	}
 	
 	/**
@@ -129,12 +127,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function rss( $p_event, $p_string ) {
 		
-		$t_string = $p_string;
-		
 		if ( ON == plugin_config_get( 'process_markdown_rss' ) )
-			$t_string = $this->string_process_markdown( $t_string );
+			$p_string = $this->string_process_markdown( $p_string );
 		
-		return $t_string;
+		return $p_string;
 	}
 
 	/**
@@ -146,14 +142,12 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function email( $p_event, $p_string ) {
 		
-		$t_string = $p_string;
+		$p_string = string_strip_hrefs( $p_string );
+		$p_string = string_process_bug_link( $p_string, FALSE );
+		$p_string = string_process_bugnote_link( $p_string, FALSE );
+		$p_string = string_process_cvs_link( $p_string, FALSE );
 		
-		$t_string = string_strip_hrefs( $t_string );
-		$t_string = string_process_bug_link( $t_string, FALSE );
-		$t_string = string_process_bugnote_link( $t_string, FALSE );
-		$t_string = string_process_cvs_link( $t_string, FALSE );
-		
-		return $t_string;
+		return $p_string;
 	}
 	
 	/**
@@ -166,12 +160,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		$t_string = $p_string;
-		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			$t_string = $this->string_process_markdown( $t_string );
+			$p_string = $this->string_process_markdown( $p_string );
 		
-		return $t_string;
+		return $p_string;
 	}
 	
 } // end class
