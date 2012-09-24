@@ -113,7 +113,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	public function text( $p_event, $p_string, $p_multiline = TRUE ) {
 		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			$p_string = $this->string_process_markdown( $p_string );
+			$this->string_process_markdown( $p_string );
 		
 		return $p_string;
 	}
