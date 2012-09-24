@@ -16,46 +16,14 @@
 
 require_once( config_get( 'class_path' ) . 'MantisFormattingPlugin.class.php' );
 
-function fb_string_process_markdown( $p_string ) {
-	
-	// Kudos to Michel Fortin
-	// http://michelf.com/projects/php-markdown/
-	if ( ON == plugin_config_get( 'process_markdown_extra' ) )
-		require_once( dirname(__FILE__) . '/inc/markdown-extra.php' );
-	else
-		require_once( dirname(__FILE__) . '/inc/markdown.php' );
-		
-	if ( ! function_exists( 'Markdown' ) )
-		return $p_string; 
-	
-	$t_change_quotes = FALSE;
-	if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
-		$t_change_quotes = TRUE;
-		ini_set( 'magic_quotes_sybase', FALSE );
-	}
-	
-	// exclude, if bbpress inside string 
-	if ( ON == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
-		if ( ! preg_match( '/\[*\]([^\[]*)\[/', $p_string, $matches ) )
-			$p_string = Markdown( $p_string );
-	} else {
-		$p_string = Markdown( $p_string );
-	}
-	
-	if ( $t_change_quotes )
-		ini_set( 'magic_quotes_sybase', TRUE );
-	
-	return $p_string;
-}
-
 class MarkdownPlugin extends MantisFormattingPlugin {
 
 	/**
-	 *  A method that populates the plugin information and minimum requirements.
+	 * A method that populates the plugin information and minimum requirements.
 	 * 
 	 * @return  void
 	 */
-	function register() {
+	public function register() {
 		
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
@@ -72,7 +40,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->url     = 'http://bueltge.de';
 	}
 	
-	function install() {
+	public function install() {
 		
 	// helper_ensure_confirmed( plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' ) );
 	// config_set( 'plugin_MantisCoreFormatting_process_urls', OFF );
@@ -85,7 +53,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * 
 	 * @return  array default settings
 	 */
-	function config() {
+	public function config() {
 		
 		return array(
 			'process_markdown_text'          => ON,
@@ -97,6 +65,44 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	}
 	
 	/**
+	 * Filter string and fomrat with markdown function
+	 * 
+	 * @param   string $p_string
+	 * @return  string $p_string
+	 */
+	public function string_process_markdown( $p_string ) {
+		
+		// Kudos to Michel Fortin
+		// http://michelf.com/projects/php-markdown/
+		if ( ON == plugin_config_get( 'process_markdown_extra' ) )
+			require_once( dirname(__FILE__) . '/inc/markdown-extra.php' );
+		else
+			require_once( dirname(__FILE__) . '/inc/markdown.php' );
+			
+		if ( ! function_exists( 'Markdown' ) )
+			return $p_string; 
+		
+		$t_change_quotes = FALSE;
+		if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
+			$t_change_quotes = TRUE;
+			ini_set( 'magic_quotes_sybase', FALSE );
+		}
+		
+		// exclude, if bbpress inside string 
+		if ( ON == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
+			if ( ! preg_match( '/\[*\]([^\[]*)\[/', $p_string, $matches ) )
+				$p_string = Markdown( $p_string );
+		} else {
+			$p_string = Markdown( $p_string );
+		}
+		
+		if ( $t_change_quotes )
+			ini_set( 'magic_quotes_sybase', TRUE );
+		
+		return $p_string;
+	}
+	
+	/**
 	 * Plain text processing.
 	 * 
 	 * @param  string Event name
@@ -104,12 +110,12 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * @param  boolean Multiline text
 	 * @return multi Array with formatted text and multiline paramater
 	 */
-	function text( $p_event, $p_string, $p_multiline = TRUE ) {
+	public function text( $p_event, $p_string, $p_multiline = TRUE ) {
 		
 		$t_string = $p_string;
 		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			fb_string_process_markdown( $t_string );
+			$this->string_process_markdown( $t_string );
 		
 		return $t_string;
 	}
@@ -121,12 +127,12 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * @param  string Unformatted text
 	 * @return string Formatted text
 	 */
-	function rss( $p_event, $p_string ) {
+	public function rss( $p_event, $p_string ) {
 		
 		$t_string = $p_string;
 		
 		if ( ON == plugin_config_get( 'process_markdown_rss' ) )
-			$t_string = fb_string_process_markdown( $t_string );
+			$t_string = $this->string_process_markdown( $t_string );
 		
 		return $t_string;
 	}
@@ -138,7 +144,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * @param  string Unformatted text
 	 * @return string Formatted text
 	 */
-	function email( $p_event, $p_string ) {
+	public function email( $p_event, $p_string ) {
 		
 		$t_string = $p_string;
 		
@@ -158,14 +164,14 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * @param  boolean Multiline text
 	 * @return multi Array with formatted text and multiline parameter
 	 */
-	function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
+	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
 		$t_string = $p_string;
 		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			$t_string = fb_string_process_markdown( $t_string );
+			$t_string = $this->string_process_markdown( $t_string );
 		
 		return $t_string;
 	}
 	
-}
+} // end class
