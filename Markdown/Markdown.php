@@ -60,6 +60,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			'process_markdown_email'         => ON,
 			'process_markdown_rss'           => ON,
 			'process_markdown_extra'         => OFF,
+			'process_markdown_html_decode'   => ON,
 			'process_markdown_bbcode_filter' => OFF
 		);
 	}
@@ -94,6 +95,18 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 				$p_string = Markdown( $p_string );
 		} else {
 			$p_string = Markdown( $p_string );
+		}
+		
+		// Convert special HTML entities from Markdown-Function back to characters
+		if ( ON == plugin_config_get( 'process_markdown_html_decode' ) ) {
+			$p_string = preg_replace_callback(
+				'#(<code.*?>)(.*?)(</code>)#imsu',
+				create_function(
+					'$i',
+					'return $i[1] . htmlspecialchars_decode( $i[2] ) . $i[3];'
+				),
+				$p_string
+			);
 		}
 		
 		if ( $t_change_quotes )

@@ -24,6 +24,7 @@ $s_plugin_Markdown_process_text          = 'Markdown Processing Text';
 $s_plugin_Markdown_process_rss           = 'Markdown Processing RSS';
 $s_plugin_Markdown_process_email         = 'Markdown Processing EMail';
 $s_plugin_Markdown_process_extra         = 'Use <a href="http://michelf.com/projects/php-markdown/extra/" title="more informations about Extra">Markdown Extra</a>';
+$s_plugin_Markdown_process_html_decode   = 'HTML entities back to characters';
 $s_plugin_Markdown_process_bbcode_filter = 'Filter on BBCode';
 $s_plugin_Markdown_enabled               = 'On';
 $s_plugin_Markdown_disabled              = 'Off';

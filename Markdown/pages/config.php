@@ -91,6 +91,20 @@ print_manage_menu();
 	
 	<tr <?php echo helper_alternate_class(); ?>>
 		<td class="category" width="60%">
+			<?php echo plugin_lang_get( 'process_html_decode' ); ?>
+		</td>
+		<td class="center" width="20%">
+			<label><input type="radio" name="process_markdown_html_decode" value="1" <?php echo ( ON == plugin_config_get( 'process_markdown_html_decode' ) ) ? 'checked="checked" ' : ''?>/>
+				<?php echo plugin_lang_get( 'enabled' )?></label>
+		</td>
+		<td class="center" width="20%">
+			<label><input type="radio" name="process_markdown_html_decode" value="0" <?php echo ( OFF == plugin_config_get( 'process_markdown_html_decode' ) ) ? 'checked="checked" ' : ''?>/>
+				<?php echo plugin_lang_get( 'disabled' )?></label>
+		</td>
+	</tr>
+	
+	<tr <?php echo helper_alternate_class(); ?>>
+		<td class="category" width="60%">
 			<?php echo plugin_lang_get( 'process_bbcode_filter' ); ?>
 		</td>
 		<td class="center" width="20%">
