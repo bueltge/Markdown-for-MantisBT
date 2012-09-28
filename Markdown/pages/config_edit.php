@@ -21,6 +21,7 @@ $f_process_markdown_text          = gpc_get_int( 'process_markdown_text', ON );
 $f_process_markdown_rss           = gpc_get_int( 'process_markdown_rss', ON );
 $f_process_markdown_email         = gpc_get_int( 'process_markdown_email', ON );
 $f_process_markdown_extra         = gpc_get_int( 'process_markdown_extra', OFF );
+$f_process_markdown_view_php      = gpc_get_int( 'process_markdown_view_php', ON );
 $f_process_markdown_html_decode   = gpc_get_int( 'process_markdown_html_decode', ON );
 $f_process_markdown_bbcode_filter = gpc_get_int( 'process_markdown_bbcode_filter', ON );
 
@@ -35,6 +36,9 @@ if ( plugin_config_get( 'process_markdown_email' ) != $f_process_markdown_email 
 
 if ( plugin_config_get( 'process_markdown_extra' ) != $f_process_markdown_extra )
 	plugin_config_set( 'process_markdown_extra', $f_process_markdown_extra );
+
+if ( plugin_config_get( 'process_markdown_view_php' ) != $f_process_markdown_view_php )
+	plugin_config_set( 'process_markdown_view_php', $f_process_markdown_view_php );
 
 if ( plugin_config_get( 'process_markdown_html_decode' ) != $f_process_markdown_html_decode )
 	plugin_config_set( 'process_markdown_html_decode', $f_process_markdown_html_decode );

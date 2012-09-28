@@ -60,6 +60,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			'process_markdown_email'         => ON,
 			'process_markdown_rss'           => ON,
 			'process_markdown_extra'         => OFF,
+			'process_markdown_view_php'      => ON,
 			'process_markdown_html_decode'   => ON,
 			'process_markdown_bbcode_filter' => OFF
 		);
@@ -172,6 +173,9 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 * @return multi Array with formatted text and multiline parameter
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
+		
+		if ( '/view.php' !== $_SERVER['PHP_SELF'] && ON == plugin_config_get( 'process_markdown_view_php' ) )
+			return $p_string;
 		
 		if ( ON == plugin_config_get( 'process_markdown_text' ) )
 			$p_string = $this->string_process_markdown( $p_string );
