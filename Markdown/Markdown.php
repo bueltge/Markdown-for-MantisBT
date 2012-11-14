@@ -42,8 +42,8 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	
 	public function install() {
 		
-	// helper_ensure_confirmed( plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' ) );
-	// config_set( 'plugin_MantisCoreFormatting_process_urls', OFF );
+		helper_ensure_confirmed( plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' ) );
+	
 		config_set( 'plugin_format_process_text', OFF );
 		config_set( 'plugin_format_process_urls', OFF );
 		
@@ -144,7 +144,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		if ( FALSE === strpos( $_SERVER['PHP_SELF'], 'view.php' ) && 1 == plugin_config_get( 'process_markdown_view_php' ) )
+		if ( FALSE === strpos( $_SERVER['PHP_SELF'], '/view.php' ) && 1 == plugin_config_get( 'process_markdown_view_php' ) )
 			return $p_string;
 		
 		if ( 1 == plugin_config_get( 'process_markdown_text' ) )
