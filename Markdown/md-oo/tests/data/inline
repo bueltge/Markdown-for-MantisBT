@@ -1,0 +1,18 @@
+[foo]: http://example.com/  "Optional Title Here"
+[bar]: http://example.com/  'Optional Title Here'
+[baz]: http://example.com/  (Optional Title Here)
+
+[angles]: <http://example.com/>  "Optional Title Here"
+
+[nextline]: http://example.com/longish/path/to/resource/here
+   "Optional Title Here"
+
+
+
+This is [an example](http://example.com/ "Title") inline link.
+
+[This link](http://example.net/  ) has no title attribute.
+
+See my [About](/about/) page for details.
+
+[Nested [brackets]](/nested/)

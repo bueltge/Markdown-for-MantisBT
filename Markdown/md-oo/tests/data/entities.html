@@ -1,0 +1,10 @@
+<p>Markdown states that symbols &amp; and &lt; must be escaped to ease writing.
+However if &amp; is part of html entity like &copy; it must not be escaped.
+Similary, if &lt; is part of html tag like <head> it must not be escaped as well.
+Inside code spans like this <code>&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;/html&gt;</code> &lt; is always escaped.
+Same rule apply to code blocks like this:</p>
+
+<pre><code>&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;"Markdown"&lt;/title&gt;&lt;/title&gt;&lt;/head&gt;
+    &lt;a href="http://example.com?foo=bar&amp;bar=baz"&gt;Link&lt;/a&gt;
+&lt;/html&gt;</code></pre>

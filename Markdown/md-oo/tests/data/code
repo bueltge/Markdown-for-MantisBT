@@ -1,0 +1,19 @@
+ This text is not code.
+
+    start code
+    
+        indent code //comment
+            indent more
+    
+    # foo bar
+    * list
+    
+    <div class="footer">
+        &copy; 2012 Foo Corporation
+    </div>
+    
+    end code
+
+There is ``a literal <backtick> (`) here.``
+
+  \`not code\`

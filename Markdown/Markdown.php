@@ -28,7 +28,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page        = 'config';
-		$this->version     = '0.0.1';
+		$this->version     = '0.0.2';
 		$this->requires    = array(
 			'MantisCore' => '1.2.0',
 		);
@@ -57,8 +57,8 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		
 		return array(
 			'process_markdown_text'          => ON,
-			'process_markdown_email'         => ON,
-			'process_markdown_rss'           => ON,
+			'process_markdown_email'         => OFF,
+			'process_markdown_rss'           => OFF,
 			'process_markdown_extra'         => OFF,
 			'process_markdown_view_php'      => ON,
 			'process_markdown_html_decode'   => ON,
@@ -76,11 +76,11 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		
 		// Kudos to Michel Fortin
 		// http://michelf.com/projects/php-markdown/
-		if ( ON == plugin_config_get( 'process_markdown_extra' ) )
+		if ( 1 == plugin_config_get( 'process_markdown_extra' ) )
 			require_once( dirname(__FILE__) . '/inc/markdown-extra.php' );
 		else
 			require_once( dirname(__FILE__) . '/inc/markdown.php' );
-			
+		
 		if ( ! function_exists( 'Markdown' ) )
 			return $p_string; 
 		
@@ -90,8 +90,8 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			ini_set( 'magic_quotes_sybase', FALSE );
 		}
 		
-		// exclude, if bbpress inside string 
-		if ( ON == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
+		// exclude, if bbcode inside string 
+		if ( 1 == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
 			if ( ! preg_match( '/\[*\]([^\[]*)\[/', $p_string, $matches ) )
 				$p_string = Markdown( $p_string );
 		} else {
@@ -99,7 +99,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		}
 		
 		// Convert special HTML entities from Markdown-Function back to characters
-		if ( ON == plugin_config_get( 'process_markdown_html_decode' ) ) {
+		if ( 1 == plugin_config_get( 'process_markdown_html_decode' ) ) {
 			$p_string = preg_replace_callback(
 				'#(<code.*?>)(.*?)(</code>)#imsu',
 				create_function(
@@ -126,40 +126,8 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function text( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		if ( ON == plugin_config_get( 'process_markdown_text' ) )
-			$this->string_process_markdown( $p_string );
-		
-		return $p_string;
-	}
-	
-	/**
-	 * RSS text processing.
-	 * 
-	 * @param  string Event name
-	 * @param  string Unformatted text
-	 * @return string Formatted text
-	 */
-	public function rss( $p_event, $p_string ) {
-		
-		if ( ON == plugin_config_get( 'process_markdown_rss' ) )
+		if ( 1 == plugin_config_get( 'process_markdown_text' ) )
 			$p_string = $this->string_process_markdown( $p_string );
-		
-		return $p_string;
-	}
-
-	/**
-	 * Email text processing.
-	 * 
-	 * @param  string Event name
-	 * @param  string Unformatted text
-	 * @return string Formatted text
-	 */
-	public function email( $p_event, $p_string ) {
-		
-		$p_string = string_strip_hrefs( $p_string );
-		$p_string = string_process_bug_link( $p_string, FALSE );
-		$p_string = string_process_bugnote_link( $p_string, FALSE );
-		$p_string = string_process_cvs_link( $p_string, FALSE );
 		
 		return $p_string;
 	}
@@ -174,12 +142,42 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		if ( '/view.php' !== $_SERVER['PHP_SELF'] && ON == plugin_config_get( 'process_markdown_view_php' ) )
+		if ( FALSE === strpos( $_SERVER['PHP_SELF'], 'view.php' ) && 1 == plugin_config_get( 'process_markdown_view_php' ) )
 			return $p_string;
 		
-		if ( ON == plugin_config_get( 'process_markdown_text' ) )
+		if ( 1 == plugin_config_get( 'process_markdown_text' ) )
 			$p_string = $this->string_process_markdown( $p_string );
 		
+		return $p_string;
+	}
+	
+	/**
+	 * RSS text processing.
+	 * 
+	 * @param  string Event name
+	 * @param  string Unformatted text
+	 * @return string Formatted text
+	 */
+	public function rss( $p_event, $p_string ) {
+		
+		if ( 1 == plugin_config_get( 'process_markdown_rss' ) )
+			$p_string = $this->string_process_markdown( $p_string );
+		
+		return $p_string;
+	}
+
+	/**
+	 * Email text processing.
+	 * 
+	 * @param  string Event name
+	 * @param  string Unformatted text
+	 * @return string Formatted text
+	 */
+	public function email( $p_event, $p_string ) {
+		
+		if ( 1 == plugin_config_get( 'process_markdown_email' ) )
+			$p_string = $this->string_process_markdown( $p_string );
+			
 		return $p_string;
 	}
 	
