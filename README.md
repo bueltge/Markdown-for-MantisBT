@@ -7,6 +7,10 @@ For highlighting the source use the Manits plugin [highlightcode](https://github
 
 [Mantis Bug Tracker](http://www.mantisbt.org/) (MantisBT) is a free popular web-based bugtracking system.
 
+###Caution
+ * Installing this plugin will disable the default MantisBT text and URL formatting.
+ * Check the settings of the MantisBT Formatting plugin. If the "Text Processing" and "URL Processing" options is not disabled, then please deactivate manually.
+
 ### Optional settings
  * Use Markdown for all texts in MantisBT
  * Use Markdown in RSS
