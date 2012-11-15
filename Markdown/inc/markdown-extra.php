@@ -296,11 +296,14 @@ class Markdown_Parser {
 	}
 
 
-	function transform($text) {
-	#
-	# Main function. Performs some preprocessing on the input text
-	# and pass it through the document gamut.
-	#
+	function transform($text, $multiline=true) {
+		
+		$this->m_multiline = $multiline;
+		
+		#
+		# Main function. Performs some preprocessing on the input text
+		# and pass it through the document gamut.
+		#
 		$this->setup();
 	
 		# Remove UTF-8 BOM and marker character in input, if present.
@@ -1355,8 +1358,14 @@ class Markdown_Parser {
 			if (!preg_match('/^B\x1A[0-9]+B$/', $value)) {
 				# Is a paragraph.
 				$value = $this->runSpanGamut($value);
-				$value = preg_replace('/^([ ]*)/', "<p>", $value);
-				$value .= "</p>";
+				if ( $this->m_multiline ) {
+					$value = preg_replace('/^([ ]*)/', "<p>", $value);
+				} else {
+					$value = preg_replace('/^([ ]*)/', "", $value);
+				}
+				if ( $this->m_multiline ) {
+					$value .= "</p>";
+				}
 				$grafs[$key] = $this->unhash($value);
 			}
 			else {
