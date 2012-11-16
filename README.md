@@ -31,13 +31,14 @@ The settings for the Markdown plugin
  3. Go `/manage_plugin_page.php`
  4. Install MantisBT Markdown Plugin
  5. Check the settings on `plugin.php?page=Markdown/config`
- 6. Use it ;)
+ 6. Check the settings of the MantisBT Formatting plugin. If was not change automaticly, set the option for "Text Processing" to _OFF_.
+ 7. Use it ;)
 
 ## Other Notes
 ### Version
 Version see in VERSION.txt
 
-### Licence
+### License
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog. But if you enjoy this plugin, you can thank me and leave a [small donation](http://bueltge.de/wunschliste/ "Wishliste and Donate") for the time I've spent writing and supporting this plugin. And I really don't want to know how many hours of my life this plugin has already eaten ;)
 
 ### Contributors
