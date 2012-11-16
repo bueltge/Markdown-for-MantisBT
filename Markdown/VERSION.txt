@@ -1,2 +1,11 @@
 0.0.1
 	First release
+
+0.0.2
+	Major Fixes
+	Support Multiline from Mantis; change markdown-parser class for multiline on method transform()
+	
+1.0.0
+	Stable Release
+	Small changes on Codex
+	Only 2 deafult settings are active
