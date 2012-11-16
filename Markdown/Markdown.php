@@ -28,11 +28,9 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page        = 'config';
-		$this->version     = '0.0.2';
+		$this->version     = '1.0.0';
 		$this->requires    = array(
-			'MantisCore' => '1.2.0',
-		);
-		$this->uses = array(
+			'MantisCore'           => '1.2.0',
 			'MantisCoreFormatting' => '1.0a'
 		);
 		$this->author  = 'Frank B&uuml;ltge';
@@ -40,9 +38,16 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->url     = 'http://bueltge.de';
 	}
 	
+	/**
+	 * Set options on Core Formattting plugin
+	 * 
+	 * @return  boolean
+	 */
 	public function install() {
 		
-		helper_ensure_confirmed( plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' ) );
+		helper_ensure_confirmed( 
+			plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' )
+		);
 		
 		config_set( 'plugin_format_process_text', OFF );
 		config_set( 'plugin_format_process_urls', OFF );
@@ -63,7 +68,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			'process_markdown_rss'           => OFF,
 			'process_markdown_extra'         => OFF,
 			'process_markdown_view_php'      => ON,
-			'process_markdown_html_decode'   => ON,
+			'process_markdown_html_decode'   => OFF,
 			'process_markdown_bbcode_filter' => OFF
 		);
 	}
@@ -71,8 +76,9 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	/**
 	 * Filter string and fomrat with markdown function
 	 * 
-	 * @param   string $p_string
-	 * @return  string $p_string
+	 * @param  string  $p_string    Unformatted text
+	 * @param   boolean $p_multiline Multiline text
+	 * @return  string  $p_string
 	 */
 	public function string_process_markdown( $p_string, $p_multiline = TRUE ) {
 		
@@ -123,10 +129,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	/**
 	 * Formatted text processing.
 	 * 
-	 * @param  string Event name
-	 * @param  string Unformatted text
-	 * @param  boolean Multiline text
-	 * @return multi Array with formatted text and multiline parameter
+	 * @param  string  $p_event     Event name
+	 * @param  string  $p_string    Unformatted text
+	 * @param  boolean $p_multiline Multiline text
+	 * @return array   $p_string    Array with formatted text and multiline parameter
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
@@ -142,9 +148,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	/**
 	 * RSS text processing.
 	 * 
-	 * @param  string Event name
-	 * @param  string Unformatted text
-	 * @return string Formatted text
+	 * @param  string  $p_event     Event name
+	 * @param  string  $p_string    Unformatted text
+	 * @param  boolean $p_multiline Multiline text
+	 * @return array   $p_string    Array with formatted text and multiline parameter
 	 */
 	public function rss( $p_event, $p_string, $multiline = TRUE ) {
 		
@@ -157,9 +164,10 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	/**
 	 * Email text processing.
 	 * 
-	 * @param  string Event name
-	 * @param  string Unformatted text
-	 * @return string Formatted text
+	 * @param  string  $p_event     Event name
+	 * @param  string  $p_string    Unformatted text
+	 * @param  boolean $p_multiline Multiline text
+	 * @return array   $p_string    Array with formatted text and multiline parameter
 	 */
 	public function email( $p_event, $p_string, $multiline = TRUE ) {
 		
