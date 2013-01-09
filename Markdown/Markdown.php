@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2012 Frank Bültge
+# Copyright (C) 2012 Frank Bï¿½ltge
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -103,9 +103,9 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		// exclude, if bbcode inside string 
 		if ( 1 == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
 			if ( ! preg_match( '/\[*\]([^\[]*)\[/', $p_string, $matches ) )
-				$p_string = $g_plugin_markdown_object->transform( $p_string, $multiline );
+				$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline );
 		} else {
-			$p_string = $g_plugin_markdown_object->transform( $p_string, $multiline );
+			$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline );
 		}
 		
 		// Convert special HTML entities from Markdown-Function back to characters
