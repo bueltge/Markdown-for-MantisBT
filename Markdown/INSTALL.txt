@@ -15,9 +15,5 @@
 
 INSTALL
 
-1. Just unpack (with folder Markdown) in MantisBT_Root_Folder/plugins/
-2. Install optional also the highlightcode plugin
-3. Go /manage_plugin_page.php
-4. Install MantisBT Markdown Plugin
-5. Check the settings on plugin.php?page=Markdown/config
-6. Use it ;)
+see the readme on the repo: https://github.com/mantisbt-plugins/Markdown
+or the readme.md in this folder
