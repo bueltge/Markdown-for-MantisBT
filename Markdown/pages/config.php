@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2012 Frank Bültge
+# Copyright (C) 2012 Frank BÃ¼ltge
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
 
-auth_reauthenticate();
+auth_reauthenticate( );
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 
 html_page_top1( plugin_lang_get( 'title' ) );
@@ -77,14 +77,33 @@ print_manage_menu();
 	
 	<tr <?php echo helper_alternate_class(); ?>>
 		<td class="category" width="60%">
-			<?php echo plugin_lang_get( 'process_extra' ); ?>
+			<?php echo plugin_lang_get( 'process_extended' ); ?>
 		</td>
 		<td class="center" width="20%">
-			<label><input type="radio" name="process_markdown_extra" value="1" <?php echo ( ON == plugin_config_get( 'process_markdown_extra' ) ) ? 'checked="checked" ' : ''?>/>
+			<label><input type="radio" name="process_markdown_extended" value="1" <?php echo ( ON == plugin_config_get( 'process_markdown_extended' ) ) ? 'checked="checked" ' : ''?>/>
 				<?php echo plugin_lang_get( 'enabled' )?></label>
 		</td>
 		<td class="center" width="20%">
-			<label><input type="radio" name="process_markdown_extra" value="0" <?php echo ( OFF == plugin_config_get( 'process_markdown_extra' ) ) ? 'checked="checked" ' : ''?>/>
+			<label><input type="radio" name="process_markdown_extended" value="0" <?php echo ( OFF == plugin_config_get( 'process_markdown_extended' ) ) ? 'checked="checked" ' : ''?>/>
+				<?php echo plugin_lang_get( 'disabled' )?></label>
+		</td>
+	</tr>
+	<?php
+	if ( ON == plugin_config_get( 'process_markdown_extended' ) )
+		$disabled = ' disabled="disabled"';
+	else
+	 	$disabled = '';
+	?>
+	<tr <?php echo helper_alternate_class(); ?>>
+		<td class="category" width="60%">
+			<?php echo plugin_lang_get( 'process_extra' ); ?>
+		</td>
+		<td class="center" width="20%">
+			<label><input <?php echo $disabled; ?> type="radio" name="process_markdown_extra" value="1" <?php echo ( ON == plugin_config_get( 'process_markdown_extra' ) || ON == plugin_config_get( 'process_markdown_extended' ) ) ? 'checked="checked" ' : ''?>/>
+				<?php echo plugin_lang_get( 'enabled' )?></label>
+		</td>
+		<td class="center" width="20%">
+			<label><input <?php echo $disabled; ?> type="radio" name="process_markdown_extra" value="0" <?php echo ( OFF == plugin_config_get( 'process_markdown_extra' ) && OFF == plugin_config_get( 'process_markdown_extended' ) ) ? 'checked="checked" ' : ''?>/>
 				<?php echo plugin_lang_get( 'disabled' )?></label>
 		</td>
 	</tr>

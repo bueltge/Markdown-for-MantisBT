@@ -15,6 +15,7 @@ For highlighting the source use the Manits plugin [highlightcode](https://github
  * Use Markdown for all texts in MantisBT
  * Use Markdown in RSS
  * Use Markdown in EMails
+ * Use Markdown Extended, a enhancement for MarkDown Extra. it is possible to use same Markdown syntax like Github. See the [description](https://github.com/kierate/php-markdown-extra-extended) for this enhancement.
  * Use Markdwn Extra, a special version of PHP Markdown with extra features. See the [description](http://michelf.ca/projects/php-markdown/extra/).
  * Filter on BBCode. If you use BBCode in MantisBT, then active this and the filter works only, if insde the strings is not an bbcode string.
 
