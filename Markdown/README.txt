@@ -1,4 +1,4 @@
-# Copyright (C) 2012 Frank Bültge
+# Copyright (C) 2012/2013 Frank BÃ¼ltge
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,3 +25,5 @@ Supported syntax:
 http://daringfireball.net/projects/markdown/syntax
 or/and
 http://michelf.com/projects/php-markdown/extra/
+or/and
+https://github.com/kierate/php-markdown-extra-extended

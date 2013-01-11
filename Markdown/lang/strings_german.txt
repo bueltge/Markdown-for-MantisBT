@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2012 Frank Bueltge
+# Copyright (C) 2012/2013 Frank Bueltge
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -8,21 +8,22 @@
 #
 # This program is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 # GNU General Public License for more details.
 #
 # You should have received a copy of the GNU General Public License
-# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
+# along with MantisBT. If not, see <http://www.gnu.org/licenses/>.
 
-$s_plugin_Markdown_title       = 'MantisBT Markdown';
-$s_plugin_Markdown_description = 'Markdown Verarbeitungsplugin.';
+$s_plugin_Markdown_title                 = 'MantisBT Markdown';
+$s_plugin_Markdown_description           = 'Markdown Verarbeitungsplugin.';
 
-$s_plugin_Markdown_install_message = 'HINWEIS: Eine Installation dieses Plugins deaktiviert die Standard MantisBT Text und URL Formatierung.';
+$s_plugin_Markdown_install_message       = 'HINWEIS: Eine Installation dieses Plugins deaktiviert die Standard MantisBT Text und URL Formatierung.';
 
 $s_plugin_Markdown_config                = 'Konfiguration';
 $s_plugin_Markdown_process_text          = 'Markdown Verarbeitung-Text';
 $s_plugin_Markdown_process_rss           = 'Markdown Verarbeitung-RSS';
 $s_plugin_Markdown_process_email         = 'Markdown Verarbeitung-eMail';
+$s_plugin_Markdown_process_extended      = '<a href="https://github.com/kierate/php-markdown-extra-extended" title="Mehr Informationen &uuml;ber Extended">Markdown Extended</a> nutzen, nutzt MD Extra';
 $s_plugin_Markdown_process_extra         = '<a href="http://michelf.com/projects/php-markdown/extra/" title="Mehr Informationen &uuml;ber Extra">Markdown Extra</a> nutzen';
 $s_plugin_Markdown_process_view_php      = 'Nutze die Formatierung nur auf der Seite view.php';
 $s_plugin_Markdown_process_html_decode   = 'HTML Entities zur&uuml;ck Zeichen';

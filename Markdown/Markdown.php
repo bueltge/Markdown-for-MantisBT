@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2012 Frank B�ltge
+# Copyright (C) 2012-2013 Frank Bültge
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page        = 'config';
-		$this->version     = '1.0.0';
+		$this->version     = '1.1.0';
 		$this->requires    = array(
 			'MantisCore'           => '1.2.0',
 			'MantisCoreFormatting' => '1.0a'
@@ -67,6 +67,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			'process_markdown_email'         => OFF,
 			'process_markdown_rss'           => OFF,
 			'process_markdown_extra'         => OFF,
+			'process_markdown_extended'      => OFF,
 			'process_markdown_view_php'      => ON,
 			'process_markdown_html_decode'   => OFF,
 			'process_markdown_bbcode_filter' => OFF
@@ -82,17 +83,25 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function string_process_markdown( $p_string, $p_multiline = TRUE ) {
 		
-		// Kudos to Michel Fortin
-		// http://michelf.com/projects/php-markdown/
-		if ( 1 == plugin_config_get( 'process_markdown_extra' ) )
+		if ( 1 == plugin_config_get( 'process_markdown_extended' ) ) {
+			
+			// Kudos to
+			// @see https://github.com/kierate/php-markdown-extra-extended
+			require_once( dirname(__FILE__) . '/inc/markdown_extended.php' );
+		} else if ( 1 == plugin_config_get( 'process_markdown_extra' ) ) {
+			
+			// Kudos to Michel Fortin
+			// @see http://michelf.com/projects/php-markdown/
 			require_once( dirname(__FILE__) . '/inc/markdown-extra.php' );
-		else
+		} else {
+			
 			require_once( dirname(__FILE__) . '/inc/markdown.php' );
+		}
 		
-		if ( ! class_exists( 'Markdown_Parser' ) )
-			return $p_string; 
-		
-		$g_plugin_markdown_object = new Markdown_Parser();
+		if ( 1 == plugin_config_get( 'process_markdown_extended' ) )
+			$g_plugin_markdown_object = new MarkdownExtraExtended_Parser();
+		else
+			$g_plugin_markdown_object = new Markdown_Parser();  
 		
 		$t_change_quotes = FALSE;
 		if ( ini_get_bool( 'magic_quotes_sybase' ) ) {
@@ -103,9 +112,9 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		// exclude, if bbcode inside string 
 		if ( 1 == plugin_config_get( 'process_markdown_bbcode_filter' ) ) {
 			if ( ! preg_match( '/\[*\]([^\[]*)\[/', $p_string, $matches ) )
-				$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline );
+				$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline = TRUE );
 		} else {
-			$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline );
+			$p_string = $g_plugin_markdown_object->transform( $p_string, $p_multiline = TRUE );
 		}
 		
 		// Convert special HTML entities from Markdown-Function back to characters
