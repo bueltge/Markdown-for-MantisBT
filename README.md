@@ -46,7 +46,7 @@ Good news, this plugin is free for everyone! Since it's released under the GPL, 
 see the [contributors graph](https://github.com/bueltge/Markdown-for-MantisBT/graphs/contributors) for the current status
 
 ### Contact & Feedback
-The plugin is designed and developed by me ([Frank Bültge](http://bueltge.de))
+The plugin is designed and developed by me ([Frank BÃ¼ltge](http://bueltge.de))
 
 Please let me know if you like the plugin or you hate it or whatever ... Please fork it, add an issue for ideas and bugs.
 
