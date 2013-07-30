@@ -49,8 +49,8 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 			plugin_lang_get( 'install_message' ), lang_get( 'plugin_install' )
 		);
 		
+		config_set( 'plugin_MantisCoreFormatting_process_text', OFF );
 		config_set( 'plugin_format_process_text', OFF );
-		config_set( 'plugin_format_process_urls', OFF );
 		
 		return TRUE;
 	}
