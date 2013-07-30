@@ -17,7 +17,7 @@
 $s_plugin_Markdown_title                 = 'MantisBT Markdown';
 $s_plugin_Markdown_description           = 'Markdown processing plugin.';
 
-$s_plugin_Markdown_install_message       = 'CAUTION: Installing this plugin will disable the default MantisBT text and URL formatting.';
+$s_plugin_Markdown_install_message       = 'CAUTION: Installing this plugin will disable the default MantisBT text formatting.';
 
 $s_plugin_Markdown_config                = 'Configuration';
 $s_plugin_Markdown_process_text          = 'Markdown Processing Text';
