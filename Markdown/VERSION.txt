@@ -13,3 +13,6 @@
 1.1.0
 	Fix $multiline should be $p_multiline
 	Add Markdown Extended, optional, use Markdown Extra
+	
+1.1.1
+	Add config id, there set on install the right setting item
