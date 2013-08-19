@@ -17,3 +17,8 @@
 1.1.1
 	Add config id, there set on install the right setting item
 	Remove change on core URL formatting, will leave on default 
+
+1.1.2
+	Add more backend pages on check to use markdown parser
+		Add new method for search array in array
+	Change description for this feature

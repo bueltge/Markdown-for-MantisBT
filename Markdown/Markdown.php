@@ -28,7 +28,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page        = 'config';
-		$this->version     = '1.1.1';
+		$this->version     = '1.1.2';
 		$this->requires    = array(
 			'MantisCore'           => '1.2.0',
 			'MantisCoreFormatting' => '1.0a'
@@ -140,6 +140,29 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	}
 	
 	/**
+	 * Checks if a value from array exists in an array
+	 * 
+	 * @param  Mixed  The searched value.
+	 * @param  Array  The array.
+	 * @return Bool   Returns TRUE if needle is found in the array, FALSE otherwise.
+	 */
+	public function array_in_array( $needle, $haystack ) {
+		
+		// Make sure $needle is an array for foreach
+		if ( ! is_array( $needle ) )
+			$needle = array( $needle );
+			
+		// For each value in $needle, return TRUE if in $haystack
+		foreach( $needle as $pin ) {
+			if ( in_array( $pin, $haystack ) )
+				return TRUE;
+		}
+		
+		// Return FALSE if none of the values from $needle are found in $haystack
+		return FALSE;
+	}
+	
+	/**
 	 * Formatted text processing.
 	 * 
 	 * @param  string  $p_event     Event name
@@ -149,7 +172,16 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 	 */
 	public function formatted( $p_event, $p_string, $p_multiline = TRUE ) {
 		
-		if ( FALSE === strpos( $_SERVER['PHP_SELF'], '/view.php' ) && 1 == plugin_config_get( 'process_markdown_view_php' ) )
+		// array for all pages, there will be check
+		$pages = array(
+			'view.php', 
+			'bug_change_status_page.php'
+		);
+		
+		// format url, get bt page
+		$url = explode( '/', $_SERVER['PHP_SELF'] );
+		
+		if ( ! $this->array_in_array( $url, $pages ) && 1 == plugin_config_get( 'process_markdown_view_php' ) )
 			return $p_string;
 		
 		if ( 1 == plugin_config_get( 'process_markdown_text' ) )
