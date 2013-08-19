@@ -17,7 +17,7 @@
 $s_plugin_Markdown_title                 = 'MantisBT Markdown';
 $s_plugin_Markdown_description           = 'Markdown processing plugin.';
 
-$s_plugin_Markdown_install_message       = 'CAUTION: Installing this plugin will disable the default MantisBT text and URL formatting.';
+$s_plugin_Markdown_install_message       = 'CAUTION: Installing this plugin will disable the default MantisBT text formatting.';
 
 $s_plugin_Markdown_config                = 'Configuration';
 $s_plugin_Markdown_process_text          = 'Markdown Processing Text';
@@ -25,7 +25,7 @@ $s_plugin_Markdown_process_rss           = 'Markdown Processing RSS';
 $s_plugin_Markdown_process_email         = 'Markdown Processing EMail';
 $s_plugin_Markdown_process_extended      = 'Use <a href="https://github.com/kierate/php-markdown-extra-extended" title="more informations about Extended">Markdown Extended</a>, use MD Extra';
 $s_plugin_Markdown_process_extra         = 'Use <a href="http://michelf.com/projects/php-markdown/extra/" title="more informations about Extra">Markdown Extra</a>';
-$s_plugin_Markdown_process_view_php      = 'Use Formatting only on single page view.php';
+$s_plugin_Markdown_process_view_php      = 'Use Formatting only on view bug pages and change status';
 $s_plugin_Markdown_process_html_decode   = 'HTML entities back to characters';
 $s_plugin_Markdown_process_bbcode_filter = 'Filter on BBCode';
 $s_plugin_Markdown_enabled               = 'On';
