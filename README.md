@@ -21,9 +21,11 @@ For highlighting the source use the Manits plugin [highlightcode](https://github
 
 ## Screenshot
 A example in MantisBT with default Markdown parser, not the extra modul
+
 ![Screenshot on a mantis install](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-1.png)
 
 The settings for the Markdown plugin
+
 ![Screenshot from the settings](https://raw.github.com/bueltge/Markdown-for-MantisBT/master/screenshot-2.png)
 
 ## Installation

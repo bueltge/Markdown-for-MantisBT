@@ -1,5 +1,5 @@
 <?php
-# Copyright (C) 2012-2013 Frank Bültge
+# Copyright (C) 2012-2016 Frank Bültge
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,12 +28,12 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->name        = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page        = 'config';
-		$this->version     = '1.1.2';
+		$this->version     = '1.1.3';
 		$this->requires    = array(
 			'MantisCore'           => '1.2.0, 1.3.0',
 			'MantisCoreFormatting' => '1.0a',
 		);
-		$this->author  = 'Frank B&uuml;ltge';
+		$this->author  = 'Frank Bültge';
 		$this->contact = 'frank@bueltge.de';
 		$this->url     = 'http://bueltge.de';
 	}
