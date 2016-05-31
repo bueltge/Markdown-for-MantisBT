@@ -22,3 +22,8 @@
 	Add more backend pages on check to use markdown parser
 		Add new method for search array in array
 	Change description for this feature
+	
+1.1.3
+	Change attribute on align settings for tabel cells. #8
+	Now you can use the class 'go-%%'
+	For instance: 'go-%%' becomes 'class="go-left"' or 'class="go-right"'
