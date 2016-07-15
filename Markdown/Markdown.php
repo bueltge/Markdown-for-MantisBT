@@ -30,7 +30,7 @@ class MarkdownPlugin extends MantisFormattingPlugin {
 		$this->page        = 'config';
 		$this->version     = '1.1.3';
 		$this->requires    = array(
-			'MantisCore'           => '1.2.0, 1.3.0',
+			'MantisCore'           => '1.2.0, < 1.3.0',
 			'MantisCoreFormatting' => '1.0a',
 		);
 		$this->author  = 'Frank Bültge';
